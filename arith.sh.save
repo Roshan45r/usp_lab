@@ -1,0 +1,11 @@
+#!/bin/sh
+
+echo "Enter two numbers"
+read a
+read b
+
+echo "\n1:+\n2:-\n3:*\n4:/\nEnter your choice\n"
+read ch
+
+case "$ch" in 
+	1) echo `expr
