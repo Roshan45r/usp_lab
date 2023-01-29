@@ -1,25 +1,25 @@
-#include&lt;sys/types.h&gt;
-#include&lt;unistd.h&gt;
-#include&lt;fcntl.h&gt;
-#include&lt;sys/stat.h&gt;
-#include&lt;string.h&gt;
-#include&lt;errno.h&gt;
-#include&lt;stdio.h&gt;
+#include<sys/types.h>
+#include<unistd.h>
+#include<fcntl.h>
+#include<sys/stat.h>
+#include<string.h>
+#include<errno.h>
+#include<stdio.h>
 int main(int argc, char* argv[])
 {
 int fd;
 char buf[256];
-if(argc != 2 &amp;&amp; argc != 3)
+if(argc != 2 && argc != 3)
 {
-printf(&quot;USAGE %s &lt;file&gt; [&lt;arg&gt;]\n&quot;,argv[0]);
+printf("USAGE %s <file> [<arg>]\n",argv[0]);
 return 0;
 }
 mkfifo(argv[1],S_IFIFO | S_IRWXU | S_IRWXG | S_IRWXO );
 if(argc == 2)
 {
 fd = open(argv[1], O_RDONLY|O_NONBLOCK);
-while(read(fd, buf, sizeof(buf)) &gt; 0)
-printf(&quot;%s&quot;,buf);
+while(read(fd, buf, sizeof(buf)) > 0)
+printf("%s",buf);
 }
 else
 {
